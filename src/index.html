@@ -3,226 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobHunt - Get Your Dream Job</title>
     <link href="./output.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <!-- CSS for carousel/flickity-->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <style>
+        .flickity-viewport { overflow: visible !important; }
+        .main-carousel { overflow: hidden !important; }
+    </style>
 </head>
-<body class="font-poppins text-[#0E0140] pb-[100px] overflow-x-hidden">
-    <div id="page-background" class="absolute h-[1330px] w-full top-0 -z-10 overflow-hidden">
+<body class="font-poppins text-[#0E0140] overflow-x-hidden">
+
+    <!-- PAGE BACKGROUND -->
+    <div class="absolute h-[900px] md:h-[1100px] lg:h-[1330px] w-full top-0 -z-10 overflow-hidden">
         <img src="assets/backgrounds/Group 2009.png" class="w-full h-full object-fill" alt="background">
     </div>
-    <nav class="container max-w-[1130px] mx-auto flex items-center justify-between pt-10">
-        <div class="flex shrink-0">
-            <img src="assets/logos/Logo.svg" alt="Logo">
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="container max-w-[1130px] mx-auto flex items-center justify-between pt-10 px-5 xl:px-0 relative">
+        <div class="flex shrink-0 z-50">
+            <a href="index.html"><img src="assets/logos/Logo.svg" alt="Logo"></a>
         </div>
-        <ul class="flex items-center gap-10">
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-semibold text-[#FF6B2C]">Home</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Features</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Benefits</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Stories</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">About</a>
+
+        <button id="menu-toggle" class="flex lg:hidden flex-col justify-center gap-[5px] z-50 w-8 h-8" aria-label="Toggle menu">
+            <span id="ham-1" class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+            <span id="ham-2" class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+            <span id="ham-3" class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+        </button>
+
+        <ul id="nav-menu"
+            class="hidden lg:flex items-center gap-10
+                   absolute lg:static top-full left-0 w-full lg:w-auto
+                   flex-col lg:flex-row
+                   bg-[#0E0140] lg:bg-transparent
+                   py-8 lg:py-0 px-5 lg:px-0
+                   z-40 rounded-b-2xl lg:rounded-none
+                   shadow-xl lg:shadow-none mt-2 lg:mt-0">
+            <li><a href="index.html" class="font-semibold text-[#FF6B2C]">Home</a></li>
+            <li><a href="#Categories" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Features</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Benefits</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Stories</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">About</a></li>
+            <li class="flex flex-col gap-3 pt-3 border-t border-white/20 w-full lg:hidden">
+                <a href="signin.html" class="rounded-full border border-white py-3 px-6 font-semibold text-white text-center">Sign In</a>
+                <a href="" class="rounded-full py-3 px-6 bg-[#FF6B2C] font-semibold text-white text-center">Get Started</a>
             </li>
         </ul>
-        <div class="flex items-center gap-3">
-            <a href="" class="rounded-full border border-white p-[14px_24px] font-semibold text-white">Sign In</a>
-            <a href="" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Sign In</a>
+
+        <div class="hidden lg:flex items-center gap-3 z-50">
+            <a href="signin.html" class="rounded-full border border-white p-[14px_24px] font-semibold text-white hover:bg-white/10 transition-all duration-300">Sign In</a>
+            <a href="" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Get Started</a>
         </div>
     </nav>
-    <header class="container max-w-[1130px] mx-auto flex items-center justify-between gap-[50px] mt-[70px]">
-        <div class="flex flex-col justify-center w-full gap-10">
+    <!-- =================== END NAVBAR =================== -->
+
+    <!-- HERO -->
+    <header class="container max-w-[1130px] mx-auto flex items-center justify-between gap-[50px] mt-[50px] lg:mt-[70px] px-5 xl:px-0">
+        <div class="flex flex-col justify-center w-full gap-6 lg:gap-10">
             <div class="badge flex items-center rounded-full py-2 pl-4 pr-6 gap-[10px] bg-white w-fit">
-                <div class="flex shrink-0">
-                    <img src="assets/icons/crown-orange.svg" alt="icon">
-                </div>
-                <p class="font-semibold text-sm leading-[21px] text-[#0C0039]">Helped 5 Million People Worldwide Grow Career</p>
+                <div class="flex shrink-0"><img src="assets/icons/crown-orange.svg" alt="icon"></div>
+                <p class="font-semibold text-xs sm:text-sm leading-[21px] text-[#0C0039]">Helped 5 Million People Worldwide Grow Career</p>
             </div>
             <div class="flex flex-col gap-4">
-                <h1 class="font-black text-[60px] leading-[70px] text-white">We Help You<br>Get Dream Job</h1>
-                <p class="text-lg leading-[34px] text-white">Must trusted platform to build new career and<br>get an happy job better than befooore</p>
+                <h1 class="font-black text-[40px] sm:text-[52px] lg:text-[60px] leading-[1.15] text-white">We Help You<br>Get Dream Job</h1>
+                <p class="text-base lg:text-lg leading-[34px] text-white">Must trusted platform to build new career and<br class="hidden sm:block">get a happy job better than before</p>
             </div>
-            <form action="search.html" class="flex items-center bg-white rounded-full pl-6 h-fit focus-within:ring-2 focus-within:ring-[#FF6B2C] transition-all duration-300">
-                <div class="flex items-center w-full mr-6 gap-[10px]">
-                    <div class="flex shrink-0">
-                        <img src="assets/icons/search-normal.svg" alt="icon">
-                    </div>
-                    <input type="text" autocomplete="off" class="appearance-none w-full outline-none font-semibold placeholder:font-normal placeholder:text-[#0E0140] focus:outline-none" placeholder="Quick search your dream job...">
+            <form action="search.html" class="flex items-center bg-white rounded-full pl-4 sm:pl-6 h-fit focus-within:ring-2 focus-within:ring-[#FF6B2C] transition-all duration-300 max-w-[560px]">
+                <div class="flex items-center w-full mr-3 sm:mr-6 gap-[10px]">
+                    <div class="flex shrink-0"><img src="assets/icons/search-normal.svg" alt="icon"></div>
+                    <input type="text" autocomplete="off" class="appearance-none w-full outline-none font-semibold text-sm sm:text-base placeholder:font-normal placeholder:text-[#0E0140] py-4" placeholder="Quick search your dream job...">
                 </div>
-                <button type="submit" class="rounded-full py-5 px-[30px] bg-[#FF6B2C] font-semibold text-white text-nowrap hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Explore Now</button>
+                <button type="submit" class="rounded-full py-4 sm:py-5 px-5 sm:px-[30px] bg-[#FF6B2C] font-semibold text-white text-sm sm:text-base text-nowrap hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Explore Now</button>
             </form>
         </div>
-        <div class="flex shrink-0 w-[548px]">
+        <div class="hidden md:flex shrink-0 w-[280px] lg:w-[548px]">
             <img src="assets/backgrounds/hero illustration v2.png" class="object-contain" alt="banner">
         </div>
     </header>
-    <section id="Categories" class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[70px]">
+
+    <!-- CATEGORIES -->
+    <section id="Categories" class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-[60px] lg:mt-[70px] px-5 xl:px-0">
         <h2 class="font-bold text-2xl leading-[36px] text-white">Browse by <br> Job Categories</h2>
-        <div class="categories-container grid grid-cols-4 gap-[30px]">
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-2.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Product Design</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-[30px]">
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-2.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Product Design</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-1.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Marketing</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-1.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Marketing</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Development</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Development</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-4.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Software QA</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-4.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Software QA</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-2.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Copywriting</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-2.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Copywriting</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-1.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Blockchain</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-1.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Blockchain</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Virtual Assistant</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Virtual Assistant</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
-            <a href="" class="card">
-                <div class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
-                    <div class="w-[60px] h-[60px] flex shrink-0">
-                        <img src="assets/icons/Web Development 1-4.png" class="object-contain" alt="icon">
-                    </div>
-                    <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-col">
-                            <p class="font-bold text-lg leading-[27px]">Data Science</p>
-                            <p class="font-medium">182 Jobs</p>
-                        </div>
-                        <img src="assets/icons/arrow-circle-right.svg" alt="icon">
-                    </div>
+            <a href="" class="flex flex-col rounded-[20px] border border-[#E8E4F8] p-5 gap-[30px] bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
+                <div class="w-[60px] h-[60px] flex shrink-0"><img src="assets/icons/Web Development 1-4.png" class="object-contain" alt="icon"></div>
+                <div class="flex items-center justify-between gap-4">
+                    <div class="flex flex-col"><p class="font-bold text-base lg:text-lg leading-[27px]">Data Science</p><p class="font-medium text-sm">182 Jobs</p></div>
+                    <img src="assets/icons/arrow-circle-right.svg" alt="icon" class="shrink-0">
                 </div>
             </a>
         </div>
     </section>
+
+    <!-- LATEST JOBS -->
     <section id="Latest" class="flex flex-col gap-[30px] mt-[70px]">
-        <h2 class="container max-w-[1130px] mx-auto font-bold text-2xl leading-[36px]">Latest Jobs <br> Get Them Now</h2>
+        <h2 class="container max-w-[1130px] mx-auto font-bold text-2xl leading-[36px] px-5 xl:px-0">Latest Jobs <br> Get Them Now</h2>
         <div class="main-carousel *:!overflow-visible">
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/grab.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">Grab Singa</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/grab.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">Grab Singa</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">UI UX Designer Gaming Rapid Development</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Full-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Bali, Indonesia</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Full-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Bali, Indonesia</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 250.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 250.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -230,42 +171,19 @@
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/visa.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">VISA Cabang</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/visa.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">VISA Cabang</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">UI UX Designer Gaming Rapid Development</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Full-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Bali, Indonesia</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Full-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Bali, Indonesia</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -273,42 +191,19 @@
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/mandiri.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">Mandiri Prioritas</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/mandiri.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">Mandiri Prioritas</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">Sales Acquisitions</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Part-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Remote</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Part-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Remote</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 123.000.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 123.000.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -316,42 +211,19 @@
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/grab.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">Grab Singa</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/grab.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">Grab Singa</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">UI UX Designer Gaming Rapid Development</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Full-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Bali, Indonesia</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Full-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Bali, Indonesia</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 250.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 250.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -359,42 +231,19 @@
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/bca.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">BCA Jakarta</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/bca.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">BCA Jakarta</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">UI UX Designer Gaming Rapid Development</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Full-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Bali, Indonesia</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Full-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Bali, Indonesia</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -402,42 +251,19 @@
             <div class="card first-of-type:pl-[calc((100%-1130px)/2)] last-of-type:pr-[calc((100%-1130px)/2)] px-[15px] py-[2px]">
                 <div class="w-[300px] flex flex-col shrink-0 rounded-[20px] border border-[#E8E4F8] p-5 gap-5 bg-white shadow-[0_8px_30px_0_#0E01400D] hover:ring-2 hover:ring-[#FF6B2C] transition-all duration-300">
                     <div class="company-info flex items-center gap-3">
-                        <div class="w-[70px] flex shrink-0 overflow-hidden">
-                            <img src="assets/logos/visa.svg" class="object-contain w-full h-full" alt="logo">
-                        </div>
-                        <div class="flex flex-col">
-                            <p class="font-semibold">VISA Cabang</p>
-                            <p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p>
-                        </div>
+                        <div class="w-[70px] flex shrink-0 overflow-hidden"><img src="assets/logos/visa.svg" class="object-contain w-full h-full" alt="logo"></div>
+                        <div class="flex flex-col"><p class="font-semibold">VISA Cabang</p><p class="text-sm leading-[21px]">Posted at 22 Jan 2024</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <p class="job-title font-bold text-lg leading-[27px] h-[54px] flex shrink-0 line-clamp-2">UI UX Designer Gaming Rapid Development</p>
                     <div class="job-info flex flex-col gap-[14px]">
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/note-favorite-orange.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Full-Time</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/moneys-cyan.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Guaranteed</p>
-                        </div>
-                        <div class="flex items-center gap-[6px]">
-                            <div class="flex shrink-0 w-6 h-6">
-                                <img src="assets/icons/location-purple.svg" alt="icon">
-                            </div>
-                            <p class="font-medium">Bali, Indonesia</p>
-                        </div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/note-favorite-orange.svg" alt="icon"></div><p class="font-medium">Full-Time</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/moneys-cyan.svg" alt="icon"></div><p class="font-medium">Guaranteed</p></div>
+                        <div class="flex items-center gap-[6px]"><div class="flex shrink-0 w-6 h-6"><img src="assets/icons/location-purple.svg" alt="icon"></div><p class="font-medium">Bali, Indonesia</p></div>
                     </div>
                     <hr class="border-[#E8E4F8]">
                     <div class="flex items-center justify-between">
-                        <div class="flex flex-col gap-[2px]">
-                            <p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p>
-                            <p class="text-sm leading-[21px]">/month</p>
-                        </div>
+                        <div class="flex flex-col gap-[2px]"><p class="font-bold text-lg leading-[27px]">Rp 18.500.000</p><p class="text-sm leading-[21px]">/month</p></div>
                         <a href="details.html" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Details</a>
                     </div>
                 </div>
@@ -445,17 +271,95 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- JavaScript -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-[#0E0140] text-white mt-[100px]">
+        <div class="container max-w-[1130px] mx-auto px-5 xl:px-0 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div class="flex flex-col gap-5">
+                <a href="index.html"><img src="assets/logos/Logo.svg" alt="Logo" class="h-8 w-auto"></a>
+                <p class="text-sm leading-[24px] text-white/70">Trusted by 5 million people worldwide to find their dream jobs and grow their careers.</p>
+                <div class="flex gap-3">
+                    <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:border-[#FF6B2C] hover:text-[#FF6B2C] transition-all duration-300">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69A4.28 4.28 0 0022 4.5a8.53 8.53 0 01-2.72 1.04 4.27 4.27 0 00-7.29 3.9A12.12 12.12 0 013 5.1a4.27 4.27 0 001.32 5.7 4.23 4.23 0 01-1.93-.53v.05a4.27 4.27 0 003.43 4.19 4.3 4.3 0 01-1.93.07 4.27 4.27 0 003.99 2.97A8.57 8.57 0 012 19.54a12.1 12.1 0 006.56 1.92c7.88 0 12.2-6.53 12.2-12.2l-.01-.56A8.7 8.7 0 0024 6.59a8.52 8.52 0 01-2.54.7z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:border-[#FF6B2C] hover:text-[#FF6B2C] transition-all duration-300">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zm2-6a2 2 0 110 4 2 2 0 010-4z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:border-[#FF6B2C] hover:text-[#FF6B2C] transition-all duration-300">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308C15.584 23.987 15.204 24 12 24s-3.584-.013-4.85-.072c-1.366-.062-2.633-.334-3.608-1.308C2.497 19.483 2.226 18.216 2.163 16.85 2.105 15.584 2.163 15.204 2.163 12s-.058-3.584.07-4.85C2.226 5.783 2.497 3.941 3.542 2.896 4.587 1.851 6.429 1.58 7.795 1.517 9.061 1.459 9.441 1.447 12.641 1.447l-.641.716zM12 0C8.741 0 8.332.013 7.052.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.052.013 8.332 0 8.741 0 12c0 3.259.013 3.668.072 4.948.085 1.855.601 3.697 1.942 5.038 1.341 1.341 3.183 1.857 5.038 1.942C8.332 23.987 8.741 24 12 24s3.668-.013 4.948-.072c1.855-.085 3.697-.601 5.038-1.942 1.341-1.341 1.857-3.183 1.942-5.038.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.085-1.855-.601-3.697-1.942-5.038C20.645.673 18.803.157 16.948.072 15.668.013 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-bold text-lg">Company</h4>
+                <ul class="flex flex-col gap-3 text-white/70 text-sm">
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Careers</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Blog</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Press</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-bold text-lg">Support</h4>
+                <ul class="flex flex-col gap-3 text-white/70 text-sm">
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Help Center</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h4 class="font-bold text-lg">Stay Updated</h4>
+                <p class="text-sm text-white/70">Get the latest jobs delivered to your inbox.</p>
+                <div class="flex flex-col gap-3">
+                    <input type="email" placeholder="Enter your email" class="rounded-full px-5 py-3 bg-white/10 border border-white/20 text-sm text-white placeholder:text-white/40 outline-none focus:border-[#FF6B2C] transition-all duration-300">
+                    <button class="rounded-full py-3 px-6 bg-[#FF6B2C] font-semibold text-sm text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10">
+            <div class="container max-w-[1130px] mx-auto px-5 xl:px-0 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/50">
+                <p>2024 JobHunt. All rights reserved.</p>
+                <div class="flex gap-5">
+                    <a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Privacy</a>
+                    <a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Terms</a>
+                    <a href="#" class="hover:text-[#FF6B2C] transition-colors duration-300">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- =================== END FOOTER =================== -->
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script>
+        // Flickity
         $('.main-carousel').flickity({
-            // options
             cellAlign: 'left',
             contain: true,
             prevNextButtons: false,
-            pageDots: false
+            pageDots: false,
+        });
+
+        // Hamburger
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('nav-menu');
+        const h1 = document.getElementById('ham-1');
+        const h2 = document.getElementById('ham-2');
+        const h3 = document.getElementById('ham-3');
+        let open = false;
+        toggle.addEventListener('click', () => {
+            open = !open;
+            if (open) {
+                menu.classList.remove('hidden');
+                h1.style.transform = 'translateY(7px) rotate(45deg)';
+                h2.style.opacity = '0';
+                h3.style.transform = 'translateY(-7px) rotate(-45deg)';
+            } else {
+                menu.classList.add('hidden');
+                h1.style.transform = '';
+                h2.style.opacity = '1';
+                h3.style.transform = '';
+            }
         });
     </script>
 </body>
