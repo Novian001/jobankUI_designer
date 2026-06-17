@@ -10,30 +10,39 @@
     <div id="page-background" class="absolute h-[863px] w-full top-0 -z-10 overflow-hidden">
         <img src="assets/backgrounds/Group 2009.png" class="w-full h-full object-fill" alt="background">
     </div>
-    <nav class="container max-w-[1130px] mx-auto flex items-center justify-between pt-10">
-        <div class="flex shrink-0">
-            <img src="assets/logos/Logo.svg" alt="Logo">
+    <nav class="container max-w-[1130px] mx-auto flex items-center justify-between pt-10 px-5 xl:px-0 relative">
+        <div class="flex shrink-0 z-50">
+            <a href="index.html"><img src="assets/logos/Logo.svg" alt="Logo"></a>
         </div>
-        <ul class="flex items-center gap-10">
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Home</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Features</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Benefits</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">Stories</a>
-            </li>
-            <li>
-                <a href="index.html" class="transition-all duration-300 hover:font-semibold hover:text-[#FF6B2C] font-medium text-white">About</a>
+
+        <button id="menu-toggle" class="flex lg:hidden flex-col justify-center gap-[5px] z-50 w-8 h-8" aria-label="Toggle menu">
+            <span id="ham-1" class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+            <span id="ham-2" class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+            <span id="ham-3" class="block w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+        </button>
+
+        <ul id="nav-menu"
+            class="hidden lg:flex items-center gap-10
+                   absolute lg:static top-full left-0 w-full lg:w-auto
+                   flex-col lg:flex-row
+                   bg-[#0E0140] lg:bg-transparent
+                   py-8 lg:py-0 px-5 lg:px-0
+                   z-40 rounded-b-2xl lg:rounded-none
+                   shadow-xl lg:shadow-none mt-2 lg:mt-0">
+            <li><a href="index.html" class="font-semibold text-[#FF6B2C]">Home</a></li>
+            <li><a href="#Categories" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Features</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Benefits</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">Stories</a></li>
+            <li><a href="#" class="font-medium text-white hover:font-semibold hover:text-[#FF6B2C] transition-all duration-300">About</a></li>
+            <li class="flex flex-col gap-3 pt-3 border-t border-white/20 w-full lg:hidden">
+                <a href="signIn.html" class="rounded-full border border-white py-3 px-6 font-semibold text-white text-center">Sign In</a>
+                <a href="" class="rounded-full py-3 px-6 bg-[#FF6B2C] font-semibold text-white text-center">Get Started</a>
             </li>
         </ul>
-        <div class="flex items-center gap-3">
-            <a href="" class="rounded-full border border-white p-[14px_24px] font-semibold text-white">Sign In</a>
-            <a href="" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Sign In</a>
+
+        <div class="hidden lg:flex items-center gap-3 z-50">
+            <a href="signIn.html" class="rounded-full border border-white p-[14px_24px] font-semibold text-white hover:bg-white/10 transition-all duration-300">Sign In</a>
+            <a href="" class="rounded-full p-[14px_24px] bg-[#FF6B2C] font-semibold text-white hover:shadow-[0_10px_20px_0_#FF6B2C66] transition-all duration-300">Get Started</a>
         </div>
     </nav>
     <header class="container max-w-[1130px] mx-auto flex items-center justify-between gap-[50px] mt-[70px]">
